@@ -9,11 +9,13 @@ import java.util.Date;
 
 public class SightingTest {
 
-private Animal mAnimal;
-private Animal mAnimal1;
+private Sighting mSighting;
+private Sighting mSighting1;
 @Before
 public void instantiate() {
-  mAnimal = new Animal("Cheetah", "No");
-  mAnimal1 = new Animal("Gazelle", "No");
-}
+  mSighting = new Sighting("Jane", "Zone A", 1);
+  mSighting1 = new Sighting("Jwaqs", "Zone B", 2);
+
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
 }
