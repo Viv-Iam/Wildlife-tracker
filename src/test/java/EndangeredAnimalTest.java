@@ -38,4 +38,11 @@ public class EndangeredAnimalTest {
     assertEquals(EndangeredAnimal.HEALTHY, testEndangeredAnimal.getHealth());
   }
 
+  @Test
+  public void getAge_returnsAgeOfEndangeredAnimal_String() {
+    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+    testEndangeredAnimal.save();
+    assertEquals(EndangeredAnimal.ADULT, testEndangeredAnimal.getAge());
+  }
+
 }
