@@ -15,4 +15,12 @@ public class EndangeredAnimal extends Animal {
   public static final String YOUNG = "youthful";
   public static final String NEWBORN = "newborn";
 
+  public EndangeredAnimal(String pName, String pHealth, String pAge) {
+    super(pName);
+    this.type = ANIMAL_TYPE;
+    this.health = pHealth;
+    this.age = pAge;
+  }
+
+
 }
