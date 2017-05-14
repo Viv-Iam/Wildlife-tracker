@@ -15,4 +15,12 @@ public class EndangeredAnimalTest {
     testEndangeredAnimal.save();
     assertTrue(testEndangeredAnimal.getId() > 0);
   }
+
+  @Test
+    public void getName_returnsNameOfEndangeredAnimal_String() {
+      EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+      testEndangeredAnimal.save();
+      assertEquals("Lion", testEndangeredAnimal.getName());
+    }
+
 }
