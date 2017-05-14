@@ -77,4 +77,19 @@ public void findById_returnsInstanceOfEndangeredAnimalById_EndangeredAnimal() {
     assertEquals(0, EndangeredAnimal.allEndangeredAnimals().size());
   }
 
+  @Test
+ public void getSightings_returnsAllSightingInstancesAttachedToThisEndangeredAnimal_ArrayList() {
+   EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+   testEndangeredAnimal.save();
+   Sighting testSighting1 = new Sighting(testEndangeredAnimal.getId(), testEndangeredAnimal.getType(), 1, 1);
+   testSighting1.save();
+   Sighting testSighting2 = new Sighting(testEndangeredAnimal.getId(), testEndangeredAnimal.getType(), 1, 1);
+   testSighting2.save();
+   Sighting foundByMethod1 = testEndangeredAnimal.getSightings().get(0);
+   Sighting foundByMethod2 = testEndangeredAnimal.getSightings().get(1);
+   assertTrue(testSighting1.equals(foundByMethod1));
+   assertTrue(testSighting2.equals(foundByMethod2));
+ }
+
+
 }
