@@ -75,4 +75,11 @@ public void find_returnsSightingWithSameId_secondSighting() {
   secondSighting.save();
   assertEquals(Sighting.find(secondSighting.getId()), secondSighting);
 }
+@Test
+public void save_recordsTimeOfCreationInDatabase() {
+  mSighting.save();
+  Timestamp savedSightingTime = Sighting.find(mSighting.getId()).getTimestamp();
+  Timestamp rightNow = new Timestamp(new Date().getTime());
+  assertEquals(rightNow.getDay(), savedSightingTime.getDay());
+}
 }
