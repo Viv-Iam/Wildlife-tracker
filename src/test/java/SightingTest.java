@@ -40,7 +40,7 @@ public void instantiate() {
        @Test
  public void equals_returnsTrueIfNameAndLocationAreSame_true() {
    Sighting testSighting = mSighting;
-   Sighting anotherSighting = mSighting1;
+   Sighting anotherSighting = mSighting;
    assertTrue(testSighting.equals(anotherSighting));
  }
 
@@ -55,5 +55,15 @@ public void instantiate() {
     mSighting.save();
     Sighting savedSighting = Sighting.all().get(0);
     assertEquals(savedSighting.getId(), mSighting.getId());
+  }
+
+  @Test
+  public void all_returnsAllInstancesOfSighting_true() {
+    Sighting firstSighting = mSighting;
+    firstSighting.save();
+    Sighting secondSighting = mSighting1;
+    secondSighting.save();
+    assertEquals(true, Sighting.all().get(0).equals(firstSighting));
+    assertEquals(true, Sighting.all().get(1).equals(secondSighting));
   }
 }
