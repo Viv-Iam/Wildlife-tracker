@@ -23,4 +23,12 @@ public class EndangeredAnimalTest {
       assertEquals("Lion", testEndangeredAnimal.getName());
     }
 
+    @Test
+ public void setName_changesNameOfEndangeredAnimal_void() {
+   EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+   testEndangeredAnimal.save();
+   testEndangeredAnimal.setName("Jaguar");
+   assertEquals("Jaguar", testEndangeredAnimal.getName());
+ }
+
 }
