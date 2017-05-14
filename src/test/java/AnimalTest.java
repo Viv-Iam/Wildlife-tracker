@@ -39,4 +39,10 @@ public class AnimalTest {
    assertTrue(testAnimal.equals(anotherAnimal));
  }
 
+ @Test
+ public void save_insertsObjectIntoDatabase_Animal() {
+   mAnimal.save();
+   assertEquals(true, Animal.all().get(0).equals(mAnimal));
+ }
+
 }
