@@ -69,4 +69,12 @@ public void findById_returnsInstanceOfEndangeredAnimalById_EndangeredAnimal() {
     assertTrue(testEndangeredAnimal2.equals(object2FoundByAll));
   }
 
+  @Test
+  public void delete_deletesInstanceOfEndangeredAnimal_void() {
+    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+    testEndangeredAnimal.save();
+    testEndangeredAnimal.delete();
+    assertEquals(0, EndangeredAnimal.allEndangeredAnimals().size());
+  }
+
 }
