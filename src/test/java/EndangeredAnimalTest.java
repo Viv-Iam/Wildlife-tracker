@@ -1,95 +1,115 @@
+import org.junit.*;
+import static org.junit.Assert.*;
+import org.sql2o.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import static org.junit.Assert.*;
-import org.junit.*;
-import org.sql2o.*;
 
 public class EndangeredAnimalTest {
+  private EndangeredAnimal mEndangeredAnimal;
+  @Before
+  public void instantiate() {
+    mEndangeredAnimal = new EndangeredAnimal("Spotted Hyena", "yes", "ill", "young");
+  }
+
+  EndangeredAnimal endangered1 = new EndangeredAnimal("Spotted Owl", "yes", "ill", "young");
+  EndangeredAnimal endangered2 = new EndangeredAnimal("Black Rhino", "yes", "okay", "newborn");
 
   @Rule
-  public DatabaseRule databaseRule = new DatabaseRule();
+  public DatabaseRule database = new DatabaseRule();
 
   @Test
-  public void getId_returnsIdOfEndangeredAnimal_int() {
-    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-    testEndangeredAnimal.save();
-    assertTrue(testEndangeredAnimal.getId() > 0);
+  public void endangeredAnimal_instantiatesCorrectly_true() {
+    // EndangeredAnimal testEndangeredAnimal = endangered1;
+    assertEquals(true, mEndangeredAnimal instanceof EndangeredAnimal);
   }
 
   @Test
-    public void getName_returnsNameOfEndangeredAnimal_String() {
-      EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-      testEndangeredAnimal.save();
-      assertEquals("Lion", testEndangeredAnimal.getName());
-    }
-
-    @Test
- public void setName_changesNameOfEndangeredAnimal_void() {
-   EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-   testEndangeredAnimal.save();
-   testEndangeredAnimal.setName("Jaguar");
-   assertEquals("Jaguar", testEndangeredAnimal.getName());
- }
-
- @Test
-  public void getHealth_returnsHealthOfEndangeredAnimal_String() {
-    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-    testEndangeredAnimal.save();
-    assertEquals(EndangeredAnimal.HEALTHY, testEndangeredAnimal.getHealth());
+  public void getName_animalInstantiatesWithName_Owl() {
+    // EndangeredAnimal testEndangeredAnimal = endangered1;
+    assertEquals("Spotted Hyena", mEndangeredAnimal.getName());
   }
 
   @Test
-  public void getAge_returnsAgeOfEndangeredAnimal_String() {
-    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-    testEndangeredAnimal.save();
-    assertEquals(EndangeredAnimal.ADULT, testEndangeredAnimal.getAge());
+  public void getEndangered_animalInstantiatesWithEndangered_no() {
+    // EndangeredAnimal testEndangeredAnimal = endangered1;
+    assertEquals("yes", mEndangeredAnimal.getEndangered());
   }
 
   @Test
-public void findById_returnsInstanceOfEndangeredAnimalById_EndangeredAnimal() {
-  EndangeredAnimal testEndangeredAnimal1 = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-  testEndangeredAnimal1.save();
-  EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("Jaguar", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-  testEndangeredAnimal2.save();
-  EndangeredAnimal object1FoundById = EndangeredAnimal.findById(testEndangeredAnimal1.getId());
-  EndangeredAnimal object2FoundById = EndangeredAnimal.findById(testEndangeredAnimal2.getId());
-  assertTrue(testEndangeredAnimal1.equals(object1FoundById));
-  assertTrue(testEndangeredAnimal2.equals(object2FoundById));
-}
-
-@Test
-  public void allEndangeredAnimals_returnsAllInstancesOfEndangeredAnimal_ArrayList() {
-    EndangeredAnimal testEndangeredAnimal1 = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-    testEndangeredAnimal1.save();
-    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("Jaguar", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-    testEndangeredAnimal2.save();
-    EndangeredAnimal object1FoundByAll = EndangeredAnimal.allEndangeredAnimals().get(0);
-    EndangeredAnimal object2FoundByAll = EndangeredAnimal.allEndangeredAnimals().get(1);
-    assertTrue(testEndangeredAnimal1.equals(object1FoundByAll));
-    assertTrue(testEndangeredAnimal2.equals(object2FoundByAll));
+  public void getEndangered_animalInstantiatesWithAge_young() {
+    // EndangeredAnimal testEndangeredAnimal = endangered1;
+    assertEquals("young", mEndangeredAnimal.getAge());
   }
 
   @Test
-  public void delete_deletesInstanceOfEndangeredAnimal_void() {
-    EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-    testEndangeredAnimal.save();
-    testEndangeredAnimal.delete();
-    assertEquals(0, EndangeredAnimal.allEndangeredAnimals().size());
+  public void getEndangered_personInstantiatesWithHealth_ill() {
+    // EndangeredAnimal testEndangeredAnimal = endangered1;
+    assertEquals("ill", mEndangeredAnimal.getHealth());
   }
 
   @Test
- public void getSightings_returnsAllSightingInstancesAttachedToThisEndangeredAnimal_ArrayList() {
-   EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
-   testEndangeredAnimal.save();
-   Sighting testSighting1 = new Sighting(testEndangeredAnimal.getId(), testEndangeredAnimal.getType(), 1, 1);
-   testSighting1.save();
-   Sighting testSighting2 = new Sighting(testEndangeredAnimal.getId(), testEndangeredAnimal.getType(), 1, 1);
-   testSighting2.save();
-   Sighting foundByMethod1 = testEndangeredAnimal.getSightings().get(0);
-   Sighting foundByMethod2 = testEndangeredAnimal.getSightings().get(1);
-   assertTrue(testSighting1.equals(foundByMethod1));
-   assertTrue(testSighting2.equals(foundByMethod2));
- }
+  public void equals_returnsTrueIfNameAreSame_true() {
+    EndangeredAnimal testEndangeredAnimal = mEndangeredAnimal;
+    EndangeredAnimal anotherEndangeredAnimal = mEndangeredAnimal;
+    assertTrue(testEndangeredAnimal.equals(anotherEndangeredAnimal));
+  }
 
+  @Test
+  public void save_insertsObjectIntoDatabase_EndangeredAnimal() {
+    // EndangeredAnimal testEndangeredAnimal = endangered1;
+    mEndangeredAnimal.save();
+    assertEquals(true, Animal.all().get(0).equals(mEndangeredAnimal));
+  }
 
+  @Test
+  public void save_assignsIdToEndangeredAnimal() {
+    // EndangeredAnimal testEndangeredAnimal = endangered1;
+    mEndangeredAnimal.save();
+    Animal savedEndangeredAnimal = Animal.all().get(0);
+    assertEquals(savedEndangeredAnimal.getId(), mEndangeredAnimal.getId());
+  }
+
+  @Test
+  public void all_returnsAllInstancesOfEndangeredAnimal_true() {
+    EndangeredAnimal firstEndangeredAnimal = endangered1;
+    firstEndangeredAnimal.save();
+    EndangeredAnimal secondEndangeredAnimal = endangered2;
+    secondEndangeredAnimal.save();
+    assertEquals(true, Animal.all().get(0).equals(firstEndangeredAnimal));
+    assertEquals(true, Animal.all().get(1).equals(secondEndangeredAnimal));
+  }
+
+  @Test
+  public void find_returnsEndangeredAnimalWithSameId_secondEndangeredAnimal() {
+    EndangeredAnimal firstEndangeredAnimal = endangered1;
+    firstEndangeredAnimal.save();
+    EndangeredAnimal secondEndangeredAnimal = endangered2;
+    secondEndangeredAnimal.save();
+    assertEquals(Animal.find(secondEndangeredAnimal.getId()), secondEndangeredAnimal);
+  }
+
+  @Test
+  public void setEndangered_Animal_true() {
+    EndangeredAnimal myEndangeredAnimal = new EndangeredAnimal("Spotted Owl", "no", "healthy", "young");
+    myEndangeredAnimal.save();
+    myEndangeredAnimal.setEndangered("yes", "ill", "newborn");
+    assertEquals("yes", EndangeredAnimal.find(myEndangeredAnimal.getId()).getEndangered());
+    assertEquals("ill", EndangeredAnimal.find(myEndangeredAnimal.getId()).getHealth());
+    assertEquals("newborn", EndangeredAnimal.find(myEndangeredAnimal.getId()).getAge());
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void setEndangered_throwsExceptionIfHealthIsNotAChoice(){
+    EndangeredAnimal myEndangeredAnimal = new EndangeredAnimal("Spotted Owl", "no", "healthy", "young");
+    myEndangeredAnimal.save();
+    myEndangeredAnimal.setEndangered("yes", "blech", "newborn");
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void setEndangered_throwsExceptionIfAgeIsNotAChoice(){
+    EndangeredAnimal myEndangeredAnimal = new EndangeredAnimal("Spotted Owl", "no", "healthy", "young");
+    myEndangeredAnimal.save();
+    myEndangeredAnimal.setEndangered("yes", "ill", "blech");
+  }
 }

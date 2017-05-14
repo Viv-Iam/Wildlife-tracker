@@ -11,9 +11,11 @@ public class AnimalTest {
     public DatabaseRule database = new DatabaseRule();
 
   private Animal mAnimal;
+  private Animal mAnimal1;
   @Before
   public void instantiate() {
     mAnimal = new Animal("Cheetah", "No");
+    mAnimal1 = new Animal("Gazelle", "No");
   }
 
 //ensures new object of class Animal instantiates correctly
@@ -59,9 +61,9 @@ public class AnimalTest {
 
   @Test
     public void all_returnsAllInstancesOfAnimal_true() {
-      Animal firstAnimal = animal1;
+      Animal firstAnimal = mAnimal;
       firstAnimal.save();
-      Animal secondAnimal = animal2;
+      Animal secondAnimal = mAnimal1;
       secondAnimal.save();
       assertEquals(true, Animal.all().get(0).equals(firstAnimal));
       assertEquals(true, Animal.all().get(1).equals(secondAnimal));
@@ -69,9 +71,9 @@ public class AnimalTest {
 
     @Test
   public void find_returnsAnimalWithSameId_secondAnimal() {
-    Animal firstAnimal = animal1;
+    Animal firstAnimal = mAnimal;
     firstAnimal.save();
-    Animal secondAnimal = animal2;
+    Animal secondAnimal = mAnimal1;
     secondAnimal.save();
     assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
   }
