@@ -13,7 +13,14 @@ public class AnimalTest {
   private Animal mAnimal;
   @Before
   public void instantiate() {
-    mAnimal = new Animal("Cheetah");
+    mAnimal = new Animal();
   }
+
+//ensures new object of class Animal instantiates correctly
+  @Test
+    public void animal_instantiatesCorrectly_true() {
+      assertEquals(true, mAnimal instanceof Animal);
+    }
+
 
 }
