@@ -130,4 +130,22 @@ public int getId() {
       return name;
     }
   }
-}
+
+  public boolean completeSave() {
+   try {
+     this.save();
+     return true;
+   } catch (IllegalArgumentException exception) {
+     return false;
+   }
+ }
+
+ public boolean completeEndangered(String endangered, String health, String age) {
+     try {
+       this.setEndangered(endangered, health, age);
+       return true;
+     } catch (IllegalArgumentException exception) {
+       return false;
+     }
+   }
+ }
