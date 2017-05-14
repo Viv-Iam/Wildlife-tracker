@@ -60,6 +60,8 @@ public int getId() {
             .executeUpdate();
         }
       }
+
+      //overides the equals boolean had set as false
       @Override
        public boolean equals(Object otherAnimal) {
          if (!(otherAnimal instanceof Animal)) {
