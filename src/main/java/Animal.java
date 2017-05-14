@@ -72,4 +72,13 @@ public int getId() {
          }
        }
 
+       public static List<Animal> all() {
+          String sql = "select * from animals";
+          try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql)
+            .throwOnMappingFailure(false)
+            .executeAndFetch(Animal.class);
+          }
+        }
+
 }
