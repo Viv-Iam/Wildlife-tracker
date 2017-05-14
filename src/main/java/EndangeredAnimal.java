@@ -39,4 +39,13 @@ public class EndangeredAnimal extends Animal {
        }
      }
 
+     public static List<EndangeredAnimal> allEndangeredAnimals() {
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery("SELECT * FROM animals WHERE type=:type")
+        .addParameter("type", "endangered")
+        .executeAndFetch(EndangeredAnimal.class);
+    }
+  }
+
+
 }
