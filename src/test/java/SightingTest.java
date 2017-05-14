@@ -43,4 +43,17 @@ public void instantiate() {
    Sighting anotherSighting = mSighting1;
    assertTrue(testSighting.equals(anotherSighting));
  }
+
+ @Test
+  public void save_insertsObjectIntoDatabase_Sighting() {
+    mSighting.save();
+    assertEquals(true, Sighting.all().get(0).equals(mSighting));
+  }
+
+  @Test
+  public void save_assignsIdToSighting() {
+    mSighting.save();
+    Sighting savedSighting = Sighting.all().get(0);
+    assertEquals(savedSighting.getId(), mSighting.getId());
+  }
 }

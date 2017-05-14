@@ -23,5 +23,8 @@ public class Sighting {
   public int getAnimalId() {
     return animal_id;
   }
+  public Timestamp getTimestamp() {
+   return timestamp;
+ }
 
 }
