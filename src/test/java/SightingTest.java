@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.sql.Timestamp;
 import java.util.Date;
 
-
+public class SightingTest {
 
 private Animal mAnimal;
 private Animal mAnimal1;
@@ -15,4 +15,5 @@ private Animal mAnimal1;
 public void instantiate() {
   mAnimal = new Animal("Cheetah", "No");
   mAnimal1 = new Animal("Gazelle", "No");
+}
 }
