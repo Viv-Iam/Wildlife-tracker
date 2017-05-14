@@ -60,4 +60,15 @@ public class EndangeredAnimal extends Animal {
      }
    }
 
+   @Override
+  public boolean equals(Object otherObject) {
+    if(!(otherObject instanceof EndangeredAnimal))
+      return false;
+    else {
+      EndangeredAnimal comparisonObj = (EndangeredAnimal) otherObject;
+      return this.id == comparisonObj.getId() && this.name.equals(comparisonObj.getName()) && this.health.equals(comparisonObj.getHealth()) &&
+      this.age.equals(comparisonObj.getAge());
+    }
+  }
+
 }
