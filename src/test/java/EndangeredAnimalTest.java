@@ -45,4 +45,16 @@ public class EndangeredAnimalTest {
     assertEquals(EndangeredAnimal.ADULT, testEndangeredAnimal.getAge());
   }
 
+  @Test
+public void findById_returnsInstanceOfEndangeredAnimalById_EndangeredAnimal() {
+  EndangeredAnimal testEndangeredAnimal1 = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+  testEndangeredAnimal1.save();
+  EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("Jaguar", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+  testEndangeredAnimal2.save();
+  EndangeredAnimal object1FoundById = EndangeredAnimal.findById(testEndangeredAnimal1.getId());
+  EndangeredAnimal object2FoundById = EndangeredAnimal.findById(testEndangeredAnimal2.getId());
+  assertTrue(testEndangeredAnimal1.equals(object1FoundById));
+  assertTrue(testEndangeredAnimal2.equals(object2FoundById));
+}
+
 }
