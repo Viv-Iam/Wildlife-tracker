@@ -45,4 +45,12 @@ public class AnimalTest {
    assertEquals(true, Animal.all().get(0).equals(mAnimal));
  }
 
+ @Test
+  public void save_assignsIdToAnimal() {
+    mAnimal.save();
+    Animal savedAnimal = Animal.all().get(0);
+    assertEquals(savedAnimal.getId(), mAnimal.getId());
+  }
+
+
 }
