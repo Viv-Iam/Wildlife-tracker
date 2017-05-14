@@ -47,5 +47,17 @@ public class EndangeredAnimal extends Animal {
     }
   }
 
+  @Override
+   public void save() {
+     try (Connection con = DB.sql2o.open()) {
+       this.id = (int) con.createQuery("INSERT INTO animals (name, type, health, age) VALUES (:name, :type, :health, :age)", true)
+         .addParameter("name", this.name)
+         .addParameter("type", this.type)
+         .addParameter("health", this.health)
+         .addParameter("age", this.age)
+         .executeUpdate()
+         .getKey();
+     }
+   }
 
 }
