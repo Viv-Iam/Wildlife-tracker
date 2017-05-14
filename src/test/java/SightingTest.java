@@ -15,7 +15,7 @@ private Sighting mSighting1;
 public void instantiate() {
   mSighting = new Sighting("Jane", "Zone A", 1);
   mSighting1 = new Sighting("Jwaqs", "Zone B", 2);
-
+}
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
@@ -23,4 +23,10 @@ public void instantiate() {
  public void sighting_instantiatesCorrectly_true() {
    assertEquals(true, mSighting instanceof Sighting);
  }
+ @Test
+   public void getRangerName_personInstantiatesWithRangerName_Henry() {
+     assertEquals("Jane", mSighting.getRangerName());
+   }
+
+
 }
