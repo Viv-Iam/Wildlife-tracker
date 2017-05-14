@@ -33,8 +33,7 @@ public void instantiate() {
      }
 
      @Test
-       public void getAnimalId_personInstantiatesWithAnimalId_1() {
-         Sighting testSighting = sighting1;
-         assertEquals(1, testSighting.getAnimalId());
+       public void getAnimalId_sightingInstantiatesWithAnimalId_1() {
+         assertEquals(1, mSighting.getAnimalId());
        }
 }

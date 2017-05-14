@@ -20,5 +20,8 @@ public class Sighting {
   public String getLocation() {
     return location;
   }
+  public int getAnimalId() {
+    return animal_id;
+  }
 
 }
