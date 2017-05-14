@@ -23,7 +23,7 @@ public class AnimalTest {
     }
 
   @Test
-    public void getName_animalInstantiatesWithName_Cheetah() {
+    public void getName_animalInstantiatesWithName_Cheetah() 
       assertEquals("Cheetah", mAnimal.getName());
     }
 
