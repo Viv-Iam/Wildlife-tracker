@@ -57,4 +57,16 @@ public void findById_returnsInstanceOfEndangeredAnimalById_EndangeredAnimal() {
   assertTrue(testEndangeredAnimal2.equals(object2FoundById));
 }
 
+@Test
+  public void allEndangeredAnimals_returnsAllInstancesOfEndangeredAnimal_ArrayList() {
+    EndangeredAnimal testEndangeredAnimal1 = new EndangeredAnimal("Lion", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+    testEndangeredAnimal1.save();
+    EndangeredAnimal testEndangeredAnimal2 = new EndangeredAnimal("Jaguar", EndangeredAnimal.HEALTHY, EndangeredAnimal.ADULT);
+    testEndangeredAnimal2.save();
+    EndangeredAnimal object1FoundByAll = EndangeredAnimal.allEndangeredAnimals().get(0);
+    EndangeredAnimal object2FoundByAll = EndangeredAnimal.allEndangeredAnimals().get(1);
+    assertTrue(testEndangeredAnimal1.equals(object1FoundByAll));
+    assertTrue(testEndangeredAnimal2.equals(object2FoundByAll));
+  }
+
 }
