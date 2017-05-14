@@ -38,7 +38,7 @@ public class App {
           Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
           newSighting.save();
         } else {
-          response.redirect("/failure2");
+          response.redirect("/unsuccessful1");
         }
       } else if (endangered.equals("no")) {
         if(newAnimal.completeSave()) {
@@ -46,7 +46,7 @@ public class App {
           Sighting newSighting = new Sighting(ranger_name, location, newAnimal.getId());
           newSighting.save();
         } else {
-          response.redirect("/failure");
+          response.redirect("/unsuccessful");
         }
       }
 
@@ -56,13 +56,13 @@ public class App {
 
     get("/failure", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/failure.vtl");
+      model.put("template", "templates/unsuccessful.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/failure2", (request, response) -> {
          Map<String, Object> model = new HashMap<String, Object>();
-         model.put("template", "templates/failure2.vtl");
+         model.put("template", "templates/unsuccessful1.vtl");
          return new ModelAndView(model, layout);
        }, new VelocityTemplateEngine());
 
