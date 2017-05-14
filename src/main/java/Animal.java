@@ -5,6 +5,7 @@ public class Animal {
 //Animal class attributes
 public String name;
 public String endangered;
+public int id;
 
 //Animal constructor
 public Animal(String name, String endangered) {
@@ -19,7 +20,7 @@ public String getName() {
 public String getEndangered() {
     return endangered;
   }
-
+//implement getId()
 public int getId() {
     return id;
   }
@@ -38,6 +39,7 @@ public int getId() {
           .getKey();
       }
     }
+
 
 
 }
