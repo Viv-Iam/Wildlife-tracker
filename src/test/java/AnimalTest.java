@@ -13,7 +13,7 @@ public class AnimalTest {
   private Animal mAnimal;
   @Before
   public void instantiate() {
-    mAnimal = new Animal("Cheetah");
+    mAnimal = new Animal("Cheetah", "No");
   }
 
 //ensures new object of class Animal instantiates correctly
@@ -32,5 +32,11 @@ public class AnimalTest {
     assertEquals("No", mAnimal.getEndangered());
   }
 
+  @Test
+ public void equals_returnsTrueIfNameAreSame_true() {
+   Animal testAnimal = mAnimal;
+   Animal anotherAnimal = mAnimal;
+   assertTrue(testAnimal.equals(anotherAnimal));
+ }
 
 }

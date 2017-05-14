@@ -7,7 +7,7 @@ public String name;
 public String endangered;
 
 //Animal constructor
-public Animal(String name) {
+public Animal(String name, String endangered) {
   this.name = name;
   this.endangered = endangered;
 }
