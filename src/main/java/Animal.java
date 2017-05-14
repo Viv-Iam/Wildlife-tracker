@@ -110,4 +110,14 @@ public int getId() {
      return name;
    }
  }
+
+ public static String getAnimalHealth(int id) {
+   try(Connection con = DB.sql2o.open()) {
+     String sql = "SELECT health FROM animals WHERE id = :id;";
+     String name = con.createQuery(sql)
+       .addParameter("id", id)
+       .executeScalar(String.class);
+     return name;
+   }
+ }
 }
