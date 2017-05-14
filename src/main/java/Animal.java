@@ -100,4 +100,14 @@ public int getId() {
       return name;
     }
   }
+
+  public static String getAnimalEndangered(int id) {
+   try(Connection con = DB.sql2o.open()) {
+     String sql = "SELECT endangered FROM animals WHERE id = :id;";
+     String name = con.createQuery(sql)
+       .addParameter("id", id)
+       .executeScalar(String.class);
+     return name;
+   }
+ }
 }
