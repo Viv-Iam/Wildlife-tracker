@@ -36,4 +36,11 @@ public void instantiate() {
        public void getAnimalId_sightingInstantiatesWithAnimalId_1() {
          assertEquals(1, mSighting.getAnimalId());
        }
+
+       @Test
+ public void equals_returnsTrueIfNameAndLocationAreSame_true() {
+   Sighting testSighting = mSighting;
+   Sighting anotherSighting = mSighting1;
+   assertTrue(testSighting.equals(anotherSighting));
+ }
 }
