@@ -20,6 +20,10 @@ public String getEndangered() {
     return endangered;
   }
 
+public int getId() {
+    return id;
+  }
+
   public void save() {
       if (name.equals("")) {
         throw new IllegalArgumentException("Please enter a name.");
