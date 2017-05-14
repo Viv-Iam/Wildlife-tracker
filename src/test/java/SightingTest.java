@@ -18,4 +18,9 @@ public void instantiate() {
 
   @Rule
   public DatabaseRule database = new DatabaseRule();
+
+  @Test
+ public void sighting_instantiatesCorrectly_true() {
+   assertEquals(true, mSighting instanceof Sighting);
+ }
 }
