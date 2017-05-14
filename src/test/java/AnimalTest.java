@@ -76,4 +76,11 @@ public class AnimalTest {
     assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void save_throwsExceptionIfNameIsEmpty(){
+    Animal myAnimal = new Animal("", "no");
+    myAnimal.save();
+  }
+
+
 }
