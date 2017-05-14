@@ -24,9 +24,12 @@ public void instantiate() {
    assertEquals(true, mSighting instanceof Sighting);
  }
  @Test
-   public void getRangerName_personInstantiatesWithRangerName_Henry() {
+   public void getRangerName_sightingInstantiatesWithRangerName_Henry() {
      assertEquals("Jane", mSighting.getRangerName());
    }
-
+   @Test
+     public void getLocation_sightingInstantiatesWithLocation_ZoneA() {
+       assertEquals("Zone A", mSighting.getLocation());
+     }
 
 }
