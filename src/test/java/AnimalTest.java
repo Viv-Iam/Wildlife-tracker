@@ -22,5 +22,10 @@ public class AnimalTest {
       assertEquals(true, mAnimal instanceof Animal);
     }
 
+  @Test
+    public void getName_animalInstantiatesWithName_Cheetah() {
+      assertEquals("Cheetah", mAnimal.getName());
+    }
+
 
 }
