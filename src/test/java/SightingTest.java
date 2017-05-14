@@ -32,4 +32,9 @@ public void instantiate() {
        assertEquals("Zone A", mSighting.getLocation());
      }
 
+     @Test
+       public void getAnimalId_personInstantiatesWithAnimalId_1() {
+         Sighting testSighting = sighting1;
+         assertEquals(1, testSighting.getAnimalId());
+       }
 }
