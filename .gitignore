@@ -36,3 +36,6 @@ Thumbs.db
 ############
 build/
 .gradle/
+nano.save
+nano.save.1
+nano.save.2
