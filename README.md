@@ -25,7 +25,7 @@ Browse through our pages either using our navbar or page links and make any purc
 ## History
 Website created on 12th May 2017
 
-##Contributing
+## Contributing
 I welcome pull requests
 
 
